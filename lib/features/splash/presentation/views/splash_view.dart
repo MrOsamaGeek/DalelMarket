@@ -23,10 +23,11 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+          alignment: Alignment.center,
           child: Text(
-        AppStrings.appName,
-        style: CustomTextStyle.pacifico400style64,
-      )),
+            AppStrings.appName,
+            style: CustomTextStyle.pacifico400style64,
+          )),
     );
   }
 }

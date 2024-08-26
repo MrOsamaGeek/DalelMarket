@@ -1,13 +1,21 @@
-import 'package:dalel/core/utils/app_strings.dart';
-import 'package:dalel/core/widgets/custom_btn.dart';
+import 'package:dalel/core/function/navigation.dart';
 import 'package:dalel/features/on_boarding/presentation/views/widget/custom_nav_bar.dart';
+import 'package:dalel/features/on_boarding/presentation/views/widget/get_buttons.dart';
 import 'package:dalel/features/on_boarding/presentation/views/widget/on_boarding_widget_bady.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class OnBoardingView extends StatelessWidget {
+class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
 
+  @override
+  State<OnBoardingView> createState() => _OnBoardingViewState();
+}
+
+class _OnBoardingViewState extends State<OnBoardingView> {
+  final PageController _controller = PageController(initialPage: 0);
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -15,13 +23,24 @@ class OnBoardingView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           children: [
             const SizedBox(height: 40),
-            customNavBar(),
-            OnBoardingWidgetBody(),
+            customNavBar(
+              onTap: () {
+                customReplacementNavigate(context, '/signUp');
+              },
+            ),
+            OnBoardingWidgetBody(
+              onPageChanged: (index) {
+                setState(() {
+                  currentIndex = index;
+                });
+              },
+              controller: _controller,
+            ),
             const SizedBox(height: 88),
-            const CustomBtn(text: AppStrings.next),
+            GetButtons(currentIndex: currentIndex, controller: _controller),
             const SizedBox(height: 17)
           ],
         ),

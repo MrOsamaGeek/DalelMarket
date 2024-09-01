@@ -5,9 +5,9 @@ abstract class CustomTextStyle {
   static final pacifico400style64 = TextStyle(
       fontSize: 64,
       fontWeight: FontWeight.w400,
-      color: AppColors.deebBrown,
+      color: AppColors.deepBrown,
       fontFamily: 'Pacifico');
-  static final pacifico600style28 = TextStyle(
+  static final Poppins600style28 = TextStyle(
       fontSize: 28,
       fontWeight: FontWeight.w600,
       color: AppColors.black,
@@ -20,7 +20,7 @@ abstract class CustomTextStyle {
   static final poppins400sty12 = TextStyle(
       fontSize: 12,
       fontWeight: FontWeight.w400,
-      color: AppColors.deebBrown,
+      color: AppColors.deepBrown,
       fontFamily: 'Poppins');
   static final poppins500sty18 = const TextStyle(
       fontSize: 18,

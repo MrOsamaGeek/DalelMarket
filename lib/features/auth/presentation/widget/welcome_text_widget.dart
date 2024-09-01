@@ -9,7 +9,7 @@ class WelcomeTextWidget extends StatelessWidget {
     return Align(
       child: Text(
         text,
-        style: CustomTextStyle.pacifico600style28,
+        style: CustomTextStyle.Poppins600style28,
       ),
     );
   }

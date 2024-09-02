@@ -2,10 +2,12 @@ import 'package:dalel/core/database/cache/cache_helper.dart';
 import 'package:dalel/core/routes/app_router.dart';
 import 'package:dalel/core/services/services_locator.dart';
 import 'package:dalel/core/utils/app_colors.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp;
   setUpServicesLocator();
   await getIt<CacheHelper>().init();
 

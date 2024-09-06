@@ -1,7 +1,7 @@
+import 'package:dalel/app/dalel_app.dart';
 import 'package:dalel/core/database/cache/cache_helper.dart';
-import 'package:dalel/core/routes/app_router.dart';
+import 'package:dalel/core/function/check_state_changes.dart';
 import 'package:dalel/core/services/services_locator.dart';
-import 'package:dalel/core/utils/app_colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -10,19 +10,7 @@ void main() async {
   await Firebase.initializeApp;
   setUpServicesLocator();
   await getIt<CacheHelper>().init();
+  checkStateChanges();
 
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: ThemeData(scaffoldBackgroundColor: AppColors.offWhite),
-      debugShowCheckedModeBanner: false,
-      routerConfig: router,
-    );
-  }
+  runApp(const Dalel());
 }

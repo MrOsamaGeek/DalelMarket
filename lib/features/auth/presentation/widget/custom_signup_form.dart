@@ -1,3 +1,5 @@
+import 'package:dalel/core/function/custom_toast.dart';
+import 'package:dalel/core/function/navigation.dart';
 import 'package:dalel/core/utils/app_colors.dart';
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/widgets/custom_btn.dart';
@@ -16,6 +18,12 @@ class CustomSignUpForm extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {},
       builder: (context, state) {
+        if (state is SignUpSuccessState) {
+          showToast('Account created Successfully');
+          customReplacementNavigate(context, '/signIn');
+        } else if (state is SignUpFailureState) {
+          showToast(state.errMessage);
+        }
         AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
         return Form(
             key: authCubit.signupFormKey,
@@ -47,18 +55,21 @@ class CustomSignUpForm extends StatelessWidget {
                 ),
                 const TermsAndConditionWidget(),
                 const SizedBox(height: 88),
-                CustomBtn(
-                    color: authCubit.termsAndConditionCheckBox == false
-                        ? AppColors.grey
-                        : null,
-                    onPressed: () {
-                      if (authCubit.termsAndConditionCheckBox == true) {
-                        if (authCubit.signupFormKey.currentState!.validate()) {
-                          authCubit.signUpWithEmailAndPassword();
-                        }
-                      }
-                    },
-                    text: AppStrings.signUp),
+                state is SignUpLoadingState
+                    ? CircularProgressIndicator(color: AppColors.primaryColor)
+                    : CustomBtn(
+                        color: authCubit.termsAndConditionCheckBox == false
+                            ? AppColors.grey
+                            : null,
+                        onPressed: () {
+                          if (authCubit.termsAndConditionCheckBox == true) {
+                            if (authCubit.signupFormKey.currentState!
+                                .validate()) {
+                              authCubit.signUpWithEmailAndPassword();
+                            }
+                          }
+                        },
+                        text: AppStrings.signUp),
               ],
             ));
       },

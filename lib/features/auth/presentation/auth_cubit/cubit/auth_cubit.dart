@@ -11,6 +11,7 @@ class AuthCubit extends Cubit<AuthState> {
   String? password;
   bool? termsAndConditionCheckBox = false;
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> signInFormKey = GlobalKey<FormState>();
   signUpWithEmailAndPassword() async {
     try {
       emit(SignUpLoadingState());
@@ -26,7 +27,6 @@ class AuthCubit extends Cubit<AuthState> {
             errMessage: 'The account already exists for that email.'));
       }
     } catch (e) {
-      print(e.toString());
       emit(SignUpFailureState(errMessage: e.toString()));
     }
   }
@@ -34,5 +34,25 @@ class AuthCubit extends Cubit<AuthState> {
   updateTermsAndConditionCheckBox({required newValue}) {
     termsAndConditionCheckBox = newValue;
     emit(TermsAndConditionUpdateState());
+  }
+
+  signInWithEmailAndPassword() async {
+    try {
+      emit(SignInLoadingState());
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailAddress!,
+        password: password!,
+      );
+      emit(SignInSuccessState());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        emit(SignInFailureState(errMessage: 'No User found for that E-mail.'));
+      } else if (e.code == 'email-already-in-use') {
+        emit(SignInFailureState(
+            errMessage: 'The account already exists for that email.'));
+      }
+    } catch (e) {
+      emit(SignInFailureState(errMessage: e.toString()));
+    }
   }
 }

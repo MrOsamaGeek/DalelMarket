@@ -46,8 +46,8 @@ class CustomSignInForm extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 16),
-                ForgotPasswordTextWidget(),
-                const SizedBox(height: 152),
+                const ForgotPasswordTextWidget(),
+                const SizedBox(height: 102),
                 state is SignInLoadingState
                     ? CircularProgressIndicator(color: AppColors.primaryColor)
                     : CustomBtn(

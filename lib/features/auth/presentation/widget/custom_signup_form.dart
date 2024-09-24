@@ -19,20 +19,20 @@ class CustomSignUpForm extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         if (state is SignUpSuccessState) {
-          showToast('Account created Successfully');
-          customReplacementNavigate(context, '/home');
+          showToast('Successfully, Check your Email to verfiy your account');
+          customReplacementNavigate(context, '/signIn');
         } else if (state is SignUpFailureState) {
           showToast(state.errMessage);
         }
         AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
         return Form(
-            key: authCubit.signupFormKey,
+            key: authCubit.signUpFormKey,
             child: Column(
               children: [
                 CustomTextFormField(
-                  labelText: AppStrings.fristName,
-                  onChanged: (fristName) {
-                    authCubit.fristName = fristName;
+                  labelText: AppStrings.firstName,
+                  onChanged: (firstName) {
+                    authCubit.firstName = firstName;
                   },
                 ),
                 CustomTextFormField(
@@ -63,7 +63,7 @@ class CustomSignUpForm extends StatelessWidget {
                             : null,
                         onPressed: () {
                           if (authCubit.termsAndConditionCheckBox == true) {
-                            if (authCubit.signupFormKey.currentState!
+                            if (authCubit.signUpFormKey.currentState!
                                 .validate()) {
                               authCubit.signUpWithEmailAndPassword();
                             }

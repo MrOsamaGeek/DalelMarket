@@ -7,10 +7,14 @@ import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   setUpServicesLocator();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: 'IzaSyBA3ba1DR8H6t-xJKLARMIiBWwxcZJthMcapiKey',
+          appId: "1:540602696954:android:00a98097555b57ace27543",
+          messagingSenderId: "540602696954",
+          projectId: "dalel-3da92"));
   await getIt<CacheHelper>().init();
   checkStateChanges();
-
   runApp(const Dalel());
 }

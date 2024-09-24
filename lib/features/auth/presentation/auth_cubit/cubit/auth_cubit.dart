@@ -5,18 +5,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-  String? fristName;
+  String? firstName;
   String? lastName;
   String? emailAddress;
   String? password;
   bool? termsAndConditionCheckBox = false;
-  GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> signInFormKey = GlobalKey<FormState>();
   signUpWithEmailAndPassword() async {
     try {
       emit(SignUpLoadingState());
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailAddress!, password: password!);
+      verifyEmail();
       emit(SignUpSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -25,10 +26,18 @@ class AuthCubit extends Cubit<AuthState> {
       } else if (e.code == 'email-already-in-use') {
         emit(SignUpFailureState(
             errMessage: 'The account already exists for that email.'));
+      } else if (e.code == 'invalid-Email') {
+        emit(SignUpFailureState(errMessage: 'this Email is invalid.'));
+      } else {
+        emit(SignInFailureState(errMessage: e.code));
       }
     } catch (e) {
       emit(SignUpFailureState(errMessage: e.toString()));
     }
+  }
+
+  verifyEmail() async {
+    await FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
 
   updateTermsAndConditionCheckBox({required newValue}) {
@@ -50,10 +59,8 @@ class AuthCubit extends Cubit<AuthState> {
       } else if (e.code == 'wrong-password') {
         emit(SignInFailureState(
             errMessage: 'Wrong password provided for that user.'));
-      }else{
-
-        emit(SignInFailureState(
-            errMessage: 'Check your E-mail and Password.'));
+      } else {
+        emit(SignInFailureState(errMessage: 'Check your E-mail and Password.'));
       }
     } catch (e) {
       emit(SignInFailureState(errMessage: e.toString()));

@@ -47,6 +47,7 @@ dependencies:
   firebase_messaging: ^15.1.0
   fluttertoast: ^8.2.8
   flutter_svg: ^2.0.10+1
+  persistent_bottom_nav_bar: ^6.2.1
 
 dev_dependencies:
   flutter_test:

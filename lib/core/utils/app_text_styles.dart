@@ -12,7 +12,7 @@ abstract class CustomTextStyle {
       fontWeight: FontWeight.w600,
       color: AppColors.black,
       fontFamily: 'Poppins');
-  static final poppins500sty24 = const TextStyle(
+  static const poppins500sty24 = TextStyle(
       fontSize: 64,
       fontWeight: FontWeight.w500,
       color: Colors.black,
@@ -22,19 +22,19 @@ abstract class CustomTextStyle {
       fontWeight: FontWeight.w400,
       color: AppColors.deepBrown,
       fontFamily: 'Poppins');
-  static final poppins500sty18 = const TextStyle(
+  static const poppins500sty18 = TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w500,
       color: Colors.grey,
       fontFamily: 'Poppins');
-  static final poppins300sty16 = const TextStyle(
+  static const poppins300sty16 = TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w300,
       color: Colors.black,
       fontFamily: 'Poppins');
-  static final saira700sty32 = const TextStyle(
-      fontSize: 60,
-      fontWeight: FontWeight.w700,
+  static const saira700sty32 = TextStyle(
+      fontSize: 42,
+      fontWeight: FontWeight.bold,
       color: Colors.white,
-      fontFamily: 'Saira');
+      fontFamily: 'Pacifico');
 }

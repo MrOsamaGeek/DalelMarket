@@ -1,16 +1,8 @@
-# dalel
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot (48)](https://github.com/user-attachments/assets/ba4963bb-632c-4339-85fd-294c8731a0fa)
+![Screenshot (49)](https://github.com/user-attachments/assets/fdd5e3a9-3c4c-410b-b2ec-80a0267564c3)
+![Screenshot (50)](https://github.com/user-attachments/assets/10e24507-a031-4d59-a0e9-5540263ecb04)
+![Screenshot (51)](https://github.com/user-attachments/assets/60fb4f18-85a7-4e11-88b0-810232aae4ac)
+![Screenshot (52)](https://github.com/user-attachments/assets/fe25cf11-4814-485a-8e11-6d96569dd39b)
+![Screenshot (53)](https://github.com/user-attachments/assets/c9f32abe-3519-41d1-a985-1f9b0326df6e)
+![Screenshot (54)](https://github.com/user-attachments/assets/745c37bf-eb2f-419e-ba33-68c8a792c4ca)
+![Screenshot (55)](https://github.com/user-attachments/assets/d02e89cd-1321-43f3-9f5f-4a40bafaca2a)
